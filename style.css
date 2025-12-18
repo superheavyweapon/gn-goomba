@@ -1,0 +1,263 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+#searchBar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 800px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #444;
+    color: #fff;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.zone-item {
+    background-color: #444;
+    border: 1px solid #666;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    color: #fff;
+}
+
+.zone-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.zone-item button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.zone-item button:hover {
+    background-color: #0056b3;
+}
+
+#zoneViewer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: #222;
+    border: 2px solid #000;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#zoneViewer iframe {
+    width: 100%;
+    height: 90%;
+    border: none;
+    background-color: #333;
+}
+
+#zoneInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #555;
+    color: #fff;
+    font-size: 16px;
+}
+
+#zoneTitle {
+    text-align: left;
+}
+
+#zoneId {
+    color: #9c9c9c;
+}
+
+#controls {
+    text-align: right;
+}
+
+#controls button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+}
+
+#topControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+#dataButtons {
+    display: flex;
+    gap: 10px;
+}
+
+#dataButtons button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#dataButtons button:hover {
+    background-color: #367C39;
+}
+
+#dataButtons input[type="file"] {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+}
+
+#sortOptions {
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 16px;
+    appearance: none;
+    background-color: white;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23343a40" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 8px 10px;
+}
+
+#sortOptions:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    z-index: 1000;
+}
+
+#darkModeToggle:hover {
+    background-color: #0056b3;
+}
+
+body:not(.dark-mode) {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+body:not(.dark-mode) h1 {
+    color: #000;
+}
+
+body:not(.dark-mode) #searchBar {
+    border-color: #ddd;
+    background-color: #fff;
+    color: #000;
+}
+
+body:not(.dark-mode) .zone-item {
+    background-color: white;
+    border-color: #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+body:not(.dark-mode) #zoneViewer {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body:not(.dark-mode) #zoneViewer iframe {
+    background-color: #fff;
+}
+
+body:not(.dark-mode) #zoneInfo {
+    background: #ddd;
+    color: #000;
+}
+
+body:not(.dark-mode) #dataButtons input[type="file"] {
+    border-color: #ddd;
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+body:not(.dark-mode) #sortOptions {
+    background-color: white;
+    color: #000;
+    border-color: #ddd;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+}
+
+.zone-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.zone-count {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color, #ffffff);
+}
