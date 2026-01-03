@@ -1,0 +1,274 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.navbar {
+  background-color: #111;
+  padding: 10px 0;
+}
+
+.navbar a {
+  color: #ddd;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  background-color: #333;
+  border-radius: 5px;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 28px;
+}
+
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.downloads-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+
+.download-box {
+  display: flex;
+  background: #2a2a2a;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.download-box img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.download-info a {
+  color: #ddd;
+  font-weight: bold;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.download-url {
+  font-size: 13px;
+  color: #aaa;
+  word-break: break-all;
+  margin-top: 5px;
+}
+
+.game-box {
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+  text-align: center;
+}
+
+.game-box img {
+  width: 100%;
+  height: 176px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.game-box a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.game-box a:hover,
+.download-box a:hover,
+.link-box a:hover,
+.bigbox a:hover {
+  color: #686df2;
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  padding: 0px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.link-box {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+  text-align: center;
+}
+
+.link-box img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.link-box a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.changelog-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 0px;
+  text-align: left;
+}
+
+.changelog-entry {
+  background: #2a2a2a;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+}
+
+.changelog-entry h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #686df2;
+}
+
+.changelog-entry p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.settings-container {
+  max-width: 760px;
+  margin: 0px auto;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 98%;
+  padding: 8px;
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #686df2;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+button:hover,
+.tag-button.active:hover {
+  background-color: #5a61e0;
+}
+
+.preset-buttons {
+  margin-top: 0px;
+}
+
+.preset-buttons h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.preset-buttons button {
+  margin: 0px;
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #333;
+}
+
+.preset-buttons button:hover {
+  background-color: #444;
+}
+
+.collapsible-content {
+  display: none;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px;
+  background-color: #111;
+  margin-top: 10px;
+}
+
+.tag-button {
+  background-color: #333;
+  color: #ddd;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tag-button:hover {
+  background-color: #444;
+}
+
+.tag-button.active {
+  background-color: #686df2;
+  color: #fff;
+}
