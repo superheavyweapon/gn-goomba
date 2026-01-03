@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Doom</title>
+    <script src="../../scripts/main.js"></script>
+    <meta name="google-site-verification" content="dRFt1DjMaz4QI-gPjzUmoztVbRdcXL8jltdpfQp6Klo" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="Play DOOM via JS-DOS.">
+    <meta name="keywords" content="DOOM,pc,game,javscript">
+    <meta property="og:title" content='DOOM &middot; js-dos' />
+    <meta property="og:description" content="Play in the DOOM in browser." />
+    <meta property="og:type" content="game" />
+    <meta property="og:url" content="https://thedoggybrad.github.io/doom_on_js-dos/" />
+    <meta property="og:image" content="https://thedoggybrad.github.io/doom_on_js-dos/DOOM.png" />
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+    <link rel="manifest" href="site.webmanifest">
+    <script type="text/javascript" src="https://thedoggybrad.github.io/doom_on_js-dos/js-dos-api.js"></script>
+  <body style="background-color:#121212; color: white">
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .dosbox-default>.dosbox-container {
+        width: 100vw !important;
+        height: 100vh !important;
+        top: -20px;
+      }
+
+      #DOOM .dosbox-container canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        display: block;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+    </style>
+    <center>
+      <div style="margin-top:20px;" id="DOOM" class="dosbox-default"></div>
+      <script type="text/javascript">
+        var dosbox_DOOM = new Dosbox({
+          id: "DOOM",
+          onload: function() {
+            dosbox_DOOM.run("https://thedoggybrad.github.io/doom_on_js-dos/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+          },
+          onrun: function(dosbox, app) {
+            console.log("App '" + app + "' is runned");
+          }
+        });
+      </script>
+    </center>
+  </body>
+</html>
