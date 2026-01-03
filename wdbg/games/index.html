@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WDBG</title>
+    <script src="../scripts/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scripts/style.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../games">Games</a>
+      <a href="../emulator">Emulator</a>
+      <a href="../flash">Flash</a>
+    </div>
+    <div id="tags-container"></div>
+    <div id="game-container" class="games-container"></div>
+    <script>
+      let allGames = [];
+      let selectedTags = new Set();
+      async function loadGames() {
+        const response = await fetch("../scripts/json/games.json");
+        allGames = await response.json();
+        let allTags = [...new Set(allGames.flatMap(game => game.tags))];
+        allTags.sort((a, b) => {
+          if (a === "Featured") return -1;
+          if (b === "Featured") return 1;
+          if (a === "Beta") return 1;
+          if (b === "Beta") return -1;
+          return a.localeCompare(b);
+        });
+        const tagsContainer = document.getElementById("tags-container");
+        allTags.forEach(tag => {
+          const btn = document.createElement("button");
+          btn.textContent = tag;
+          btn.className = "tag-button";
+          btn.onclick = () => toggleTag(tag, btn);
+          tagsContainer.appendChild(btn);
+        });
+        renderGames();
+      }
+
+      function toggleTag(tag, btn) {
+        if (selectedTags.has(tag)) {
+          selectedTags.delete(tag);
+          btn.classList.remove("active");
+        } else {
+          selectedTags.add(tag);
+          btn.classList.add("active");
+        }
+        renderGames();
+      }
+
+      function renderGames() {
+        const container = document.getElementById("game-container");
+        container.innerHTML = "";
+        const filteredGames = selectedTags.size === 0 ? allGames : allGames.filter(game => {
+          const tags = Array.isArray(game.tags) ? game.tags : [];
+          return [...selectedTags].some(t => tags.includes(t));
+        });
+        filteredGames.forEach(game => {
+          const gameBox = document.createElement("div");
+          gameBox.className = "game-box";
+          gameBox.innerHTML = `
+
+						<img src="${game.image}" alt="${game.title}">
+							<a href="${game.link}">${game.title}</a>
+      `;
+          container.appendChild(gameBox);
+        });
+      }
+      document.addEventListener("DOMContentLoaded", loadGames);
+    </script>
+  </body>
+</html>
