@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WDBG</title>
+    <script src="scripts/main.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scripts/style.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="games">Games</a>
+      <a href="emulator">Emulator</a>
+      <a href="flash">Flash</a>
+    </div>
+    <h1>Settings</h1>
+    <div class="settings-container">
+      <div class="setting-group">
+        <label for="titleInput">Page Title</label>
+        <input type="text" id="titleInput" placeholder="WDBG">
+      </div>
+      <div class="setting-group">
+        <label for="faviconInput">Favicon URL</label>
+        <input type="text" id="faviconInput" placeholder="https://wowdabug.github.io/wdbg/images/favicon.png">
+      </div>
+      <div class="setting-group">
+        <label>Page Title and Favicon URL Presets</label>
+        <div class="preset-buttons">
+          <button onclick="applyPreset('', '')">Default</button>
+          <button onclick="applyPreset('Google', 'https://www.google.com/favicon.ico')">Google</button>
+          <button onclick="applyPreset('Search', 'https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg.ico')">Bing</button>
+          <button onclick="applyPreset('Classlink', 'https://myapps.classlink.com/favicon.ico')">Classlink</button>
+          <button onclick="applyPreset('Schoology', 'https://www.powerschool.com/favicon.ico')">Schoology</button>
+        </div>
+      </div>
+      <div class="setting-group">
+        <label for="panicKeyInput">Panic Keybind</label>
+        <input type="text" id="panicKeyInput" placeholder="" readonly>
+      </div>
+      <div class="setting-group">
+        <label>Panic Keybind URL</label>
+        <input type="text" id="panicUrlInput" placeholder="">
+      </div>
+      <div class="setting-group">
+        <label>Panic Keybind URL Presets</label>
+        <div class="preset-buttons">
+          <button onclick="applyPanicPreset('', '')">Default</button>
+          <button onclick="applyPanicPreset('', 'https://www.google.com')">Google</button>
+          <button onclick="applyPanicPreset('', 'https://www.bing.com')">Bing</button>
+          <button onclick="applyPanicPreset('', 'https://myapps.classlink.com/home')">Classlink</button>
+          <button onclick="applyPanicPreset('', 'https://mnps.schoology.com/home')">Schoology</button>
+        </div>
+      </div>
+      <div class="setting-group">
+        <label>Custom JS URL</label>
+        <input type="text" id="customJSInput" placeholder="https://wowdabug.github.io/wdbg/scripts/js/default.js">
+      </div>
+      <div class="setting-group">
+        <label>Custom JS URL Presets</label>
+        <div class="preset-buttons">
+          <button onclick="applyJSPreset('')">Default</button>
+          <button onclick="applyJSPreset('https://wowdabug.github.io/wdbg/scripts/js/blank.js')">Blank</button>
+        </div>
+      </div>
+      <div class="setting-group">
+        <label for="urlAngryBirds">Angry Birds URL</label>
+        <input type="text" id="urlAngryBirds" placeholder="https://wowdabug.github.io/s2/angry_birds/">
+      </div>
+      <div class="setting-group">
+        <label for="urlBrotato">Brotato URL</label>
+        <input type="text" id="urlBrotato" placeholder="https://wowdabug.github.io/s1/brotato/">
+      </div>
+      <div class="setting-group">
+        <label for="urlChampionIsland">Champion Island URL</label>
+        <input type="text" id="urlChampionIsland" placeholder="https://wowdabug.github.io/s2/champion_island/">
+      </div>
+      <div class="setting-group">
+        <label for="urlCrazyCattle">Crazy Cattle 3D URL</label>
+        <input type="text" id="urlCrazyCattle" placeholder="https://wowdabug.github.io/s1/crazy_cattle/">
+      </div>
+      <div class="setting-group">
+        <label for="urlDownloads">Downloads URL</label>
+        <input type="text" id="urlDownloads" placeholder="https://wowdabug.github.io/s2/downloads/">
+      </div>
+      <div class="setting-group">
+        <label for="urlFnaf">FNAF URL</label>
+        <input type="text" id="urlFnaf" placeholder="https://wowdabug.github.io/fnaf/">
+      </div>
+      <div class="setting-group">
+        <label for="urlGranny">Granny URL</label>
+        <input type="text" id="urlGranny" placeholder="https://wowdabug.github.io/s2/granny/">
+      </div>
+      <div class="setting-group">
+        <label for="urlJustAPlatformer">Just A Platformer URL</label>
+        <input type="text" id="urlJustAPlatformer" placeholder="https://wowdabug.github.io/s2/just_a_platformer/">
+      </div>
+      <div class="setting-group">
+        <label for="urlOvo">OvO URL</label>
+        <input type="text" id="urlOvo" placeholder="https://wowdabug.github.io/s2/ovo/">
+      </div>
+      <div class="setting-group">
+        <label for="urlPeoplePlayground">People Playground URL</label>
+        <input type="text" id="urlPeoplePlayground" placeholder="https://wowdabug.github.io/s1/people_playground/">
+      </div>
+      <div class="setting-group">
+        <label for="urlPeoplePlayground">Pizza Tower URL</label>
+        <input type="text" id="urlPizzaTower" placeholder="https://wowdabug.github.io/s1/pizza_tower/">
+      </div>
+      <div class="setting-group">
+        <label for="urlPolytrack">Polytrack URL</label>
+        <input type="text" id="urlPolytrack" placeholder="https://wowdabug.github.io/s2/polytrack/">
+      </div>
+      <div class="setting-group">
+        <label for="urlRun3">Run 3 URL</label>
+        <input type="text" id="urlRun3" placeholder="https://wowdabug.github.io/run_3/tn6pS9dCf37xAhkJv/">
+      </div>
+      <div class="setting-group">
+        <label for="urlTownscaper">Townscaper URL</label>
+        <input type="text" id="urlTownscaper" placeholder="https://wowdabug.github.io/s2/townscaper/">
+      </div>
+      <div class="setting-group">
+        <label for="urlUndertale">Undertale URL</label>
+        <input type="text" id="urlUndertale" placeholder="https://wowdabug.github.io/s1/undertale/">
+      </div>
+      <div class="setting-group">
+        <label>Game URL Presets</label>
+        <div class="preset-buttons">
+          <button onclick="applyGameUrlPreset('default')">Default</button>
+        </div>
+      </div>
+      <button onclick="saveSettings()">Save Settings</button>
+    </div>
+    <script>
+      function saveSettings() {
+        localStorage.setItem('customTitle', document.getElementById('titleInput').value);
+        localStorage.setItem('customFavicon', document.getElementById('faviconInput').value);
+        localStorage.setItem('panicKey', document.getElementById('panicKeyInput').value);
+        localStorage.setItem('panicUrl', document.getElementById('panicUrlInput').value);
+        localStorage.setItem('JS', document.getElementById('customJSInput').value);
+        localStorage.setItem('CSS', document.getElementById('customCSSInput').value);
+        localStorage.setItem('urlAngryBirds', document.getElementById('urlAngryBirds').value);
+        localStorage.setItem('urlBrotato', document.getElementById('urlBrotato').value);
+        localStorage.setItem('urlChampionIsland', document.getElementById('urlChampionIsland').value);
+        localStorage.setItem('urlCrazyCattle', document.getElementById('urlCrazyCattle').value);
+        localStorage.setItem('urlDownloads', document.getElementById('urlDownloads').value);
+        localStorage.setItem('urlFnaf', document.getElementById('urlFnaf').value);
+        localStorage.setItem('urlGranny', document.getElementById('urlGranny').value);
+        localStorage.setItem('urlJustAPlatformer', document.getElementById('urlJustAPlatformer').value);
+        localStorage.setItem('urlOvo', document.getElementById('urlOvo').value);
+        localStorage.setItem('urlPeoplePlayground', document.getElementById('urlPeoplePlayground').value);
+        localStorage.setItem('urlPizzaTower', document.getElementById('urlPizzaTower').value);
+        localStorage.setItem('urlPolytrack', document.getElementById('urlPolytrack').value);
+        localStorage.setItem('urlRun3', document.getElementById('urlRun3').value);
+        localStorage.setItem('urlTownscaper', document.getElementById('urlTownscaper').value);
+        localStorage.setItem('urlUndertale', document.getElementById('urlUndertale').value);
+      }
+
+      function applyGameUrlPreset(preset) {
+        if (preset === 'default') {
+          document.getElementById('urlAngryBirds').value = '';
+          document.getElementById('urlBrotato').value = '';
+          document.getElementById('urlChampionIsland').value = '';
+          document.getElementById('urlCrazyCattle').value = '';
+          document.getElementById('urlDownloads').value = '';
+          document.getElementById('urlFnaf').value = '';
+          document.getElementById('urlGranny').value = '';
+          document.getElementById('urlJustAPlatformer').value = '';
+          document.getElementById('urlOvo').value = '';
+          document.getElementById('urlPeoplePlayground').value = '';
+          document.getElementById('urlPizzaTower').value = '';
+          document.getElementById('urlPolytrack').value = '';
+          document.getElementById('urlRun3').value = '';
+          document.getElementById('urlTownscaper').value = '';
+          document.getElementById('urlUndertale').value = '';
+        }
+      }
+
+      function applyPreset(title, favicon) {
+        document.getElementById('titleInput').value = title;
+        document.getElementById('faviconInput').value = favicon;
+      }
+
+      function applyPanicPreset(key, url) {
+        document.getElementById('panicUrlInput').value = url;
+      }
+
+      function applyJSPreset(url) {
+        document.getElementById('customJSInput').value = url;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const titleInput = document.getElementById('titleInput');
+        const faviconInput = document.getElementById('faviconInput');
+        const panicKeyInput = document.getElementById('panicKeyInput');
+        const panicUrlInput = document.getElementById('panicUrlInput');
+        const customJSInput = document.getElementById('customJSInput');
+        const savedTitle = localStorage.getItem('customTitle');
+        const savedFavicon = localStorage.getItem('customFavicon');
+        const savedPanicKey = localStorage.getItem('panicKey');
+        const savedPanicUrl = localStorage.getItem('panicUrl');
+        const savedJS = localStorage.getItem('JS');
+        document.getElementById('urlAngryBirds').value = localStorage.getItem('urlAngryBirds') || '';
+        document.getElementById('urlBrotato').value = localStorage.getItem('urlBrotato') || '';
+        document.getElementById('urlChampionIsland').value = localStorage.getItem('urlChampionIsland') || '';
+        document.getElementById('urlCrazyCattle').value = localStorage.getItem('urlCrazyCattle') || '';
+        document.getElementById('urlDownloads').value = localStorage.getItem('urlDownloads') || '';
+        document.getElementById('urlFnaf').value = localStorage.getItem('urlFnaf') || '';
+        document.getElementById('urlGranny').value = localStorage.getItem('urlGranny') || '';
+        document.getElementById('urlJustAPlatformer').value = localStorage.getItem('urlJustAPlatformer') || '';
+        document.getElementById('urlOvo').value = localStorage.getItem('urlOvo') || '';
+        document.getElementById('urlPeoplePlayground').value = localStorage.getItem('urlPeoplePlayground') || '';
+        document.getElementById('urlPizzaTower').value = localStorage.getItem('urlPizzaTower') || '';
+        document.getElementById('urlPolytrack').value = localStorage.getItem('urlPolytrack') || '';
+        document.getElementById('urlRun3').value = localStorage.getItem('urlRun3') || '';
+        document.getElementById('urlTownscaper').value = localStorage.getItem('urlTownscaper') || '';
+        document.getElementById('urlUndertale').value = localStorage.getItem('urlUndertale') || '';
+        if (savedTitle) titleInput.value = savedTitle;
+        if (savedFavicon) faviconInput.value = savedFavicon;
+        if (savedPanicKey) panicKeyInput.value = savedPanicKey;
+        if (savedPanicUrl) panicUrlInput.value = savedPanicUrl;
+        if (savedJS) customJSInput.value = savedJS;
+        panicKeyInput.readOnly = true;
+        panicKeyInput.addEventListener('keydown', e => {
+          e.preventDefault();
+          const key = e.key.toLowerCase();
+          panicKeyInput.value = key;
+        });
+      });
+    </script>
+  </body>
+</html>
