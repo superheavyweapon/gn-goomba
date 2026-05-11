@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNPS End of Year Countdown</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #eef2f3; padding: 20px; }
+        .container { background: white; margin: 15px auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); max-width: 600px; border-top: 8px solid #004a99; }
+        .timer { font-size: 1.4em; font-weight: bold; color: #d32f2f; margin-top: 10px; font-family: monospace; }
+        h1 { color: #004a99; }
+        h2 { margin-bottom: 5px; font-size: 1.2em; }
+        .target-info { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>MNPS School Year Countdown</h1>
+    <div id="target-display" style="font-weight: bold; margin-bottom: 20px;"></div>
+
+    <div class="container">
+        <h2>K-5 (Elementary)</h2>
+        <div class="target-info">Dismissal: 3:00 PM</div>
+        <div id="k5-timer" class="timer">Calculating...</div>
+    </div>
+
+    <div class="container">
+        <h2>6-8 (Middle)</h2>
+        <div class="target-info">Dismissal: 4:00 PM</div>
+        <div id="68-timer" class="timer">Calculating...</div>
+    </div>
+
+    <div class="container">
+        <h2>9-12 (High)</h2>
+        <div class="target-info">Dismissal: 2:00 PM</div>
+        <div id="912-timer" class="timer">Calculating...</div>
+    </div>
+
+    <script>
+        function getLastSchoolDay(year) {
+            // Find Memorial Day (Last Monday in May)
+            let memorialDay = new Date(year, 4, 31);
+            while (memorialDay.getDay() !== 1) {
+                memorialDay.setDate(memorialDay.getDate() - 1);
+            }
+            // MNPS last day is the Thursday before Memorial Day
+            let lastDay = new Date(memorialDay);
+            lastDay.setDate(memorialDay.getDate() - 4);
+            return lastDay;
+        }
+
+        function update() {
+            const now = new Date();
+            let year = now.getFullYear();
+            let targetDate = getLastSchoolDay(year);
+
+            // If the last school day has already passed this year, look to next year
+            if (now > new Date(targetDate.getTime() + 16 * 60 * 60 * 1000)) {
+                year++;
+                targetDate = getLastSchoolDay(year);
+            }
+
+            document.getElementById('target-display').innerText = `Counting down to: ${targetDate.toDateString()}`;
+
+            const configs = [
+                { id: "k5-timer", hour: 15 },
+                { id: "68-timer", hour: 16 },
+                { id: "912-timer", hour: 14 }
+            ];
+
+            configs.forEach(conf => {
+                const endDateTime = new Date(targetDate);
+                endDateTime.setHours(conf.hour, 0, 0, 0);
+                
+                const diff = endDateTime - now;
+
+                if (diff <= 0) {
+                    document.getElementById(conf.id).innerText = "SCHOOL'S OUT!";
+                    return;
+                }
+
+                const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+                const weeks = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24 * 7));
+                const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById(conf.id).innerText = 
+                    `${months}m ${weeks}w ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            });
+        }
+
+        setInterval(update, 1000);
+        update();
+    </script>
+</body>
+</html>
