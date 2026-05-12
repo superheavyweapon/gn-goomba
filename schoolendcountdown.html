@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MNPS End of Year Countdown</title>
+    <title>MNPS End of Year Countdown (2026-27)</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #eef2f3; padding: 20px; }
         .container { background: white; margin: 15px auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); max-width: 600px; border-top: 8px solid #004a99; }
@@ -15,35 +15,35 @@
 </head>
 <body>
 
-    <h1>MNPS School Year Countdown</h1>
+    <h1>MNPS School Year Countdown (2026-2027)</h1>
     <div id="target-display" style="font-weight: bold; margin-bottom: 20px;"></div>
 
     <div class="container">
         <h2>K-5 (Elementary)</h2>
-        <div class="target-info">Dismissal: 3:10 PM</div>
+        <div class="target-info">New Dismissal: 3:10 PM | Half-Day: 11:10 AM</div>
         <div id="k5-timer" class="timer">Calculating...</div>
     </div>
 
     <div class="container">
         <h2>6-8 (Middle)</h2>
-        <div class="target-info">Dismissal: 3:55 PM</div>
+        <div class="target-info">Standard Dismissal: 3:55 PM | Half-Day: 11:55 AM</div>
         <div id="68-timer" class="timer">Calculating...</div>
     </div>
 
     <div class="container">
         <h2>9-12 (High)</h2>
-        <div class="target-info">Dismissal: 2:55 PM</div>
+        <div class="target-info">New Dismissal: 2:25 PM | Half-Day: 10:25 AM</div>
         <div id="912-timer" class="timer">Calculating...</div>
     </div>
 
     <script>
         function getLastSchoolDay(year) {
-            // Find Memorial Day (Last Monday in May)
+            // MNPS 2026-2027 calendar officially ends on Friday, May 28, 2027
+            // This script dynamically calculates the Thursday before Memorial Day (May 27, 2027)
             let memorialDay = new Date(year, 4, 31);
             while (memorialDay.getDay() !== 1) {
                 memorialDay.setDate(memorialDay.getDate() - 1);
             }
-            // MNPS last day is the Thursday before Memorial Day
             let lastDay = new Date(memorialDay);
             lastDay.setDate(memorialDay.getDate() - 4);
             return lastDay;
@@ -54,23 +54,24 @@
             let year = now.getFullYear();
             let targetDate = getLastSchoolDay(year);
 
-            // If the last school day has already passed this year, look to next year
-            if (now > new Date(targetDate.getTime() + 16 * 60 * 60 * 1000)) {
+            // If the last day has passed, look to the following year
+            if (now > new Date(targetDate.getTime() + 14 * 60 * 60 * 1000)) {
                 year++;
                 targetDate = getLastSchoolDay(year);
             }
 
-            document.getElementById('target-display').innerText = `Counting down to: ${targetDate.toDateString()}`;
+            document.getElementById('target-display').innerText = `Counting down to: ${targetDate.toDateString()} (Half Day)`;
 
+            // CONFIGS: New 2026-27 times (Standard minus 4 hours)
             const configs = [
-                { id: "k5-timer", hour: 15 },
-                { id: "68-timer", hour: 16 },
-                { id: "912-timer", hour: 14 }
+                { id: "k5-timer", hour: 11, minute: 10 },  // 3:10 PM -> 11:10 AM
+                { id: "68-timer", hour: 11, minute: 55 },  // 3:55 PM -> 11:55 AM
+                { id: "912-timer", hour: 10, minute: 25 }  // 2:25 PM -> 10:25 AM
             ];
 
             configs.forEach(conf => {
                 const endDateTime = new Date(targetDate);
-                endDateTime.setHours(conf.hour, 0, 0, 0);
+                endDateTime.setHours(conf.hour, conf.minute, 0, 0);
                 
                 const diff = endDateTime - now;
 
